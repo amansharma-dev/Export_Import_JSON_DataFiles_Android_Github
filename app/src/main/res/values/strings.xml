@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Export_Import_JSON_DataFiles_Android_Github</string>
+    <string name="text_comma">,</string>
+    <string name="text_dollor">$</string>
+    <string name="text_buy">Buy</string>
+</resources>
