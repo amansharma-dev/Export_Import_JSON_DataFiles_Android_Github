@@ -9,6 +9,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.export_import_json_datafiles_android_github.model.DataItem;
@@ -33,6 +35,26 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         checkPermissions();
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_export:
+                Toast.makeText(getApplicationContext(), "Export", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_import:
+                Toast.makeText(getApplicationContext(), "Import", Toast.LENGTH_SHORT).show();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /* Checks if external storage is available for read and write */

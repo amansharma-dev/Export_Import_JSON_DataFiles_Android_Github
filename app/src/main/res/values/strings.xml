@@ -3,4 +3,6 @@
     <string name="text_comma">,</string>
     <string name="text_dollor">$</string>
     <string name="text_buy">Buy</string>
+    <string name="action_export">Export</string>
+    <string name="action_import">Import</string>
 </resources>
