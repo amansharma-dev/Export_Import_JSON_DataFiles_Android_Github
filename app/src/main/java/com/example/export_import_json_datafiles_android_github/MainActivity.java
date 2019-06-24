@@ -9,12 +9,14 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.export_import_json_datafiles_android_github.model.DataItem;
 import com.example.export_import_json_datafiles_android_github.sample.SampleDataProvider;
+import com.example.export_import_json_datafiles_android_github.utils.JSONHelper;
 
 import java.util.List;
 
@@ -48,10 +50,23 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_export:
-                Toast.makeText(getApplicationContext(), "Export", Toast.LENGTH_SHORT).show();
+
+                boolean result = JSONHelper.exportToJSON(this,dataItemList);
+                if (result){
+                    Toast.makeText(getApplicationContext(), "Data Exported", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Export Failed", Toast.LENGTH_SHORT).show();
+                }
                 return true;
             case R.id.action_import:
-                Toast.makeText(getApplicationContext(), "Import", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Import", Toast.LENGTH_SHORT).show();
+
+                List<DataItem> dataItemList = JSONHelper.importFromJSON(this);
+                if(dataItemList != null){
+                    for(DataItem dataItem: dataItemList){
+                        Log.i("MainActivity",""+dataItem.getArtistName());
+                    }
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);
